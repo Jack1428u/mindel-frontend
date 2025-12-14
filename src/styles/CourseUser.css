@@ -1,0 +1,142 @@
+/* CourseUser.css */
+
+/* === GENERAL === */
+.mindel-container {
+    background-color: #101216;
+    color: #FFFFFF;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    min-height: 100vh;
+}
+
+/* === HEADER DE SECCIÓN === */
+.page-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+/* === TARJETA DE CURSO (Minimalista) === */
+.course-card {
+    background-color: #1A1D21;
+    /* Gris oscuro secundario */
+    border: 1px solid #2C313A;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    /* Igualar altura en la fila */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    padding: 1.5rem;
+    /* p-4 equivalente */
+}
+
+/* Efecto Hover: Elevación y Borde Morado */
+.course-card:hover {
+    transform: translateY(-5px);
+    border-color: #7E57C2;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Decoración superior (Barra de color) */
+.course-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #7E57C2, #5e35b1);
+    opacity: 0.7;
+}
+
+.course-card:hover::before {
+    opacity: 1;
+}
+
+/* === TYPOGRAPHY === */
+.course-title {
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.2rem;
+    text-decoration: none;
+    display: block;
+}
+
+.course-teacher {
+    color: #7f8c8d;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.course-desc {
+    color: #B0B3B8;
+    /* Texto secundario */
+    font-size: 0.9rem;
+    line-height: 1.5;
+    /* Limitar a 3 líneas */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    /* Empuja el botón hacia abajo */
+}
+
+/* === BOTÓN DE ACCIÓN (Secundario - Dentro de la card) === */
+.btn-course {
+    color: #7E57C2;
+    background-color: rgba(126, 87, 194, 0.1);
+    border: none;
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+}
+
+.course-card:hover .btn-course {
+    background-color: #7E57C2;
+    color: #FFFFFF;
+}
+
+/* === BOTÓN DE INSCRIPCIÓN (Primario - Header) === */
+.btn-enroll-primary {
+    background-color: #7E57C2;
+    /* Morado Elegante */
+    color: #FFFFFF;
+    border: 1px solid #7E57C2;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50rem;
+    /* rounded-pill */
+    font-weight: 700;
+}
+
+.btn-enroll-primary:hover {
+    background-color: #6a46a8;
+    border-color: #6a46a8;
+    color: #FFFFFF;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(126, 87, 194, 0.4);
+}
+
+/* === ICONO DECORATIVO === */
+.icon-box {
+    background: rgba(126, 87, 194, 0.2);
+    padding: 8px;
+    border-radius: 8px;
+    color: #7E57C2;
+    display: inline-block;
+    margin-bottom: 1rem;
+}

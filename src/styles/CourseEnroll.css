@@ -1,0 +1,92 @@
+/* CourseList.css */
+
+/* === HEADER === */
+.catalog-header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(126, 87, 194, 0.2);
+    /* Línea sutil morada */
+    padding-bottom: 1rem;
+}
+
+/* === CARD DE INSCRIPCIÓN === */
+.enroll-card {
+    background-color: #1A1D21;
+    border: 1px solid #2C313A;
+    border-radius: 12px;
+    padding: 1.5rem;
+    height: 100%;
+    /* Misma altura en filas */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.enroll-card:hover {
+    transform: translateY(-5px);
+    border-color: #7E57C2;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* === TYPOGRAPHY === */
+.enroll-title {
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.enroll-desc {
+    color: #B0B3B8;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    /* Simulación del truncatewords de Django con CSS */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* === BOTÓN AÑADIR (Submit) === */
+.btn-add-course {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #7E57C2;
+    color: #7E57C2;
+    font-weight: 600;
+    padding: 0.6rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    /* Espacio entre texto e icono */
+    cursor: pointer;
+}
+
+.btn-add-course:hover:not(:disabled) {
+    background-color: #7E57C2;
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(126, 87, 194, 0.3);
+}
+
+/* Estilo para estado deshabilitado (Matriculado o Cargando) */
+.btn-add-course:disabled {
+    border-color: #2C313A;
+    color: #6c757d;
+    cursor: not-allowed;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* === ERROR MESSAGE === */
+.error-message {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    padding: 0.5rem;
+    background-color: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 6px;
+    text-align: center;
+}

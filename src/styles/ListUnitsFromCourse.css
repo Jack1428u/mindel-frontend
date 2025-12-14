@@ -1,0 +1,109 @@
+/* ListUnits.css */
+
+/* === GENERAL === */
+.mindel-container {
+    background-color: #101216;
+    color: #FFFFFF;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    min-height: 100vh;
+}
+
+/* === HEADER === */
+.page-header-title {
+    color: #FFFFFF;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.page-header-subtitle {
+    color: #B0B3B8;
+    font-size: 0.95rem;
+}
+
+/* === TARJETA DE UNIDAD (Link) === */
+.unit-list-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1A1D21;
+    /* Fondo Gris Oscuro */
+    border: 1px solid #2C313A;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    /* Quitar subrayado del Link */
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto Hover: Borde Morado y Desplazamiento */
+.unit-list-card:hover {
+    border-color: #7E57C2;
+    background-color: #1F2229;
+    /* Ligeramente más claro */
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Decoración lateral en hover */
+.unit-list-card:hover::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: #7E57C2;
+}
+
+/* === TIPOGRAFÍA DENTRO DE LA TARJETA === */
+.unit-title {
+    color: #FFFFFF;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.unit-desc {
+    color: #B0B3B8;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* === BOTÓN DE ACCIÓN (Dentro de la tarjeta) === */
+.btn-unit-action {
+    background-color: rgba(126, 87, 194, 0.1);
+    color: #7E57C2;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.unit-list-card:hover .btn-unit-action {
+    background-color: #7E57C2;
+    color: #FFFFFF;
+}
+
+/* === ESTADOS DE CARGA/VACÍO === */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    color: #B0B3B8;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #7f8c8d;
+    background: #1A1D21;
+    border-radius: 12px;
+    border: 1px dashed #2C313A;
+}

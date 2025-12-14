@@ -1,0 +1,53 @@
+/* Home.css */
+
+/* === GENERAL === */
+.mindel-home-container {
+    background-color: #101216;
+    /* Negro Espacial */
+    color: #FFFFFF;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-purple {
+    color: #7E57C2 !important;
+}
+
+/* === BADGE DECORATIVO === */
+.mindel-badge {
+    background-color: rgba(126, 87, 194, 0.2);
+    color: #7E57C2;
+    border: 1px solid #7E57C2;
+}
+
+/* === TARJETAS DE INFORMACIÓN (Features) === */
+.feature-card {
+    background-color: #1A1D21;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.feature-card:hover {
+    border-color: #7E57C2;
+    transform: translateY(-5px);
+    background-color: #1F2229;
+}
+
+/* === FOOTER === */
+.mindel-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: #101216;
+}
+
+.footer-link {
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: #9a7ad8 !important;
+}
