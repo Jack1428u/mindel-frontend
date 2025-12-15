@@ -2,6 +2,10 @@ import axios from 'axios'
 
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
+    timeout: 15000, // 15 seconds timeout to handle slow backend responses
+    headers: {
+        'Content-Type': 'application/json',
+    }
 })
 
 // Request interceptor to add token to headers
@@ -66,8 +70,8 @@ api.interceptors.response.use(
             }
 
             try {
-                // Try to refresh the token
-                const response = await axios.post('http://127.0.0.1:8000/api/token/refresh/', {
+                // Try to refresh the token using environment variable
+                const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/token/refresh/`, {
                     refresh: refreshToken
                 });
 

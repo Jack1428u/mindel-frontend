@@ -50,10 +50,10 @@ export default function NavBar() {
                             <>
                                 {/* Authenticated Links */}
                                 <li className="nav-item">
-                                    <Link className="nav-link fs-5 mx-2" to="/courses">Courses</Link>
+                                    <Link className="nav-link fs-5 mx-2" to="/courses">Mis Cursos</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link fs-5 mx-2" to="/enroll">Enroll</Link>
+                                    <Link className="nav-link fs-5 mx-2" to="/enroll">Inscribirme</Link>
                                 </li>
                                 <li className="nav-item">
                                     <button
@@ -61,7 +61,7 @@ export default function NavBar() {
                                         className="nav-link btn btn-mindel-outline fs-6 px-4 py-2 ms-3 rounded-pill"
                                         style={{ display: 'inline-block', width: 'auto' }}
                                     >
-                                        Logout
+                                        Cerrar Sesión
                                     </button>
                                 </li>
                             </>
@@ -69,14 +69,14 @@ export default function NavBar() {
                             <>
                                 {/* Guest Links */}
                                 <li className="nav-item">
-                                    <Link className="nav-link fs-5 mx-2" to="/register">Register</Link>
+                                    <Link className="nav-link fs-5 mx-2" to="/register">Registrarse</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link
                                         className="nav-link btn btn-mindel-primary fs-5 px-5 py-2 ms-3 rounded-pill"
                                         to="/login"
                                     >
-                                        Login
+                                        Iniciar Sesión
                                     </Link>
                                 </li>
                             </>

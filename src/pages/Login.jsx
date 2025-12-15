@@ -1,19 +1,21 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Usamos Link para navegación SPA
+import { useNavigate, Link } from 'react-router-dom';
 import { login } from '../api/auth_api';
 import { useAuth } from '../context/AuthContext';
-import '../styles/Login.css'; // Importamos los estilos
+import '../styles/Login.css';
 
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(''); // Estado para mostrar el error visualmente
+    const [isLoading, setIsLoading] = useState(false); // Estado de carga
     const navigate = useNavigate();
     const { login: authLogin } = useAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(''); // Limpiar errores previos
+        setIsLoading(true);
 
         try {
             const res = await login(username, password);
@@ -21,12 +23,20 @@ function Login() {
             authLogin(res.data.access, res.data.refresh);
             navigate('/courses');
         } catch (error) {
-            // Mantenemos el console.error original
             console.error(error);
-            // Actualizamos el estado visual (reemplaza o complementa al alert)
-            setError('Credenciales incorrectas o error en el servidor.');
-            // Opcional: Mantener el alert si lo prefieres estrictamente
-            // alert('Error al iniciar sesión'); 
+
+            // Determinar tipo de error para mensaje específico
+            if (error.code === 'ECONNABORTED') {
+                setError('El servidor tardó demasiado en responder. Por favor, intenta nuevamente.');
+            } else if (error.response?.status === 401) {
+                setError('Credenciales incorrectas. Verifica tu usuario y contraseña.');
+            } else if (error.code === 'ERR_NETWORK') {
+                setError('Error de conexión. Verifica tu conexión a internet.');
+            } else {
+                setError('Error al iniciar sesión. Intenta nuevamente más tarde.');
+            }
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -63,8 +73,19 @@ function Login() {
                         required
                     />
 
-                    <button type="submit" className="btn-login-submit shadow">
-                        Iniciar Sesión
+                    <button
+                        type="submit"
+                        className="btn-login-submit shadow"
+                        disabled={isLoading}
+                    >
+                        {isLoading ? (
+                            <>
+                                <span className="spinner-btn"></span>
+                                Iniciando sesión...
+                            </>
+                        ) : (
+                            'Iniciar Sesión'
+                        )}
                     </button>
                 </form>
 

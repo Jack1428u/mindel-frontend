@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { QueryClientProvider } from '@tanstack/react-query'
 import CourseList from './pages/CourseList'
 import CourseDetail from './pages/CourseDetail'
 import Login from './pages/Login'
@@ -9,25 +10,28 @@ import ListUnitsFromCourse from './pages/ListUnitsFromCourse'
 import UnitDetail from './pages/UnitDetail'
 import Home from './pages/Home'
 import { AuthProvider } from './context/AuthContext'
+import { queryClient } from './config/queryClient'
 
 function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <NavBar />
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <BrowserRouter>
+          <NavBar />
 
-        <Routes>
-          <Route path='/' element={<Home />}></Route>
-          <Route path='/login' element={<Login />}></Route>
-          <Route path='/register' element={<Register />}></Route>
-          <Route path='/courses' element={<CourseUser />}></Route>
-          <Route path='/courses/:id/' element={<CourseDetail />}></Route>
-          <Route path='/enroll' element={<CourseList />}></Route>
-          <Route path='/courses/:courseId/units' element={<ListUnitsFromCourse />}></Route>
-          <Route path='/units/:unitId' element={<UnitDetail />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+          <Routes>
+            <Route path='/' element={<Home />}></Route>
+            <Route path='/login' element={<Login />}></Route>
+            <Route path='/register' element={<Register />}></Route>
+            <Route path='/courses' element={<CourseUser />}></Route>
+            <Route path='/courses/:id/' element={<CourseDetail />}></Route>
+            <Route path='/enroll' element={<CourseList />}></Route>
+            <Route path='/courses/:courseId/units' element={<ListUnitsFromCourse />}></Route>
+            <Route path='/units/:unitId' element={<UnitDetail />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
+    </QueryClientProvider >
   )
 }
 export default App

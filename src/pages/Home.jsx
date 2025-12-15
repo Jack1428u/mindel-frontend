@@ -14,7 +14,7 @@ export default function Home() {
 
                         {/* Badge */}
                         <span className="badge rounded-pill px-3 py-2 mb-3 mindel-badge">
-                            🚀 Admisión 2025
+                            🚀 Admisión 2026
                         </span>
 
                         {/* Título Principal */}

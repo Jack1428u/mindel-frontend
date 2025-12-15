@@ -9,6 +9,7 @@ function Register() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState(''); // Estado para manejo de errores visual
+    const [isLoading, setIsLoading] = useState(false); // Estado de carga
     const navigate = useNavigate();
     const { login: authLogin } = useAuth();
 
@@ -18,27 +19,34 @@ function Register() {
 
         // Validar que las contraseñas coincidan
         if (password !== confirmPassword) {
-            // Reemplazo de alert por setError
             setError('Las contraseñas no coinciden. Por favor, verifica que ambas sean iguales.');
             return;
         }
+
+        setIsLoading(true);
 
         try {
             // Solo se envía la contraseña principal al backend
             await register({ username, password });
 
-            // Auto-login after successful registration
+            // Auto-login despúes de registro exitoso
             const loginRes = await login(username, password);
             authLogin(loginRes.data.access, loginRes.data.refresh);
             navigate('/courses');
         } catch (error) {
             console.error(error);
-            // Reemplazo de alert por setError con mensaje amigable
-            if (error.response && error.response.status === 400) {
+
+            if (error.code === 'ECONNABORTED') {
+                setError('El servidor tardó demasiado en responder. Intenta nuevamente.');
+            } else if (error.response?.status === 400) {
                 setError('El nombre de usuario ya existe o los datos son inválidos.');
+            } else if (error.code === 'ERR_NETWORK') {
+                setError('Error de conexión. Verifica tu conexión a internet.');
             } else {
                 setError('Ocurrió un error al registrarse. Intenta nuevamente.');
             }
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -59,6 +67,7 @@ function Register() {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             className="mindel-input"
+                            disabled={isLoading}
                             required
                         />
                     </div>
@@ -72,6 +81,7 @@ function Register() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             className="mindel-input"
+                            disabled={isLoading}
                             required
                         />
                     </div>
@@ -85,12 +95,24 @@ function Register() {
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             className="mindel-input"
+                            disabled={isLoading}
                             required
                         />
                     </div>
 
-                    <button type="submit" className="btn-register-submit shadow">
-                        Empezar a estudiar
+                    <button
+                        type="submit"
+                        className="btn-register-submit shadow"
+                        disabled={isLoading}
+                    >
+                        {isLoading ? (
+                            <>
+                                <span className="spinner-btn"></span>
+                                Registrando...
+                            </>
+                        ) : (
+                            'Empezar a estudiar'
+                        )}
                     </button>
                 </form>
 

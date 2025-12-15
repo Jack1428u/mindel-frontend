@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import { queryClient } from '../config/queryClient';
 const AuthContext = createContext();
 
 export const useAuth = () => {
@@ -26,12 +25,16 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('access_token', accessToken);
         localStorage.setItem('refresh_token', refreshToken);
         setIsAuthenticated(true);
+        // NO limpiamos el caché aquí - los datos pueden seguir siendo útiles
+        // Si necesitas invalidar queries específicas, usa:
+        // queryClient.invalidateQueries({ queryKey: ['my-courses'] });
     };
 
     const logout = () => {
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
         setIsAuthenticated(false);
+        queryClient.clear();
     };
 
     const value = {
