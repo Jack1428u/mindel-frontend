@@ -9,6 +9,7 @@ import CourseUser from './pages/CourseUser'
 import ListUnitsFromCourse from './pages/ListUnitsFromCourse'
 import UnitDetail from './pages/UnitDetail'
 import Home from './pages/Home'
+import Information from './pages/Information'
 import { AuthProvider } from './context/AuthContext'
 import { queryClient } from './config/queryClient'
 
@@ -23,6 +24,7 @@ function App() {
             <Route path='/' element={<Home />}></Route>
             <Route path='/login' element={<Login />}></Route>
             <Route path='/register' element={<Register />}></Route>
+            <Route path='/information' element={<Information />}></Route>
             <Route path='/courses' element={<CourseUser />}></Route>
             <Route path='/courses/:id/' element={<CourseDetail />}></Route>
             <Route path='/enroll' element={<CourseList />}></Route>

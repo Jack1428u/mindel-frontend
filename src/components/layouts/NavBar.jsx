@@ -46,6 +46,11 @@ export default function NavBar() {
                             <Link className="nav-link fs-5 mx-2" to="/">Home</Link>
                         </li>
 
+                        {/* Link Information */}
+                        <li className="nav-item">
+                            <Link className="nav-link fs-5 mx-2" to="/information">Información</Link>
+                        </li>
+
                         {isAuthenticated ? (
                             <>
                                 {/* Authenticated Links */}
